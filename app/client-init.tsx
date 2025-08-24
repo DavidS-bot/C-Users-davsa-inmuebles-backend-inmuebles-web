@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { loadTokenFromStorage } from "@/lib/auth";
+import { loadTokenFromStorage } from "../../../lib/auth";
 
 // Hook para PWA
 function usePWA() {

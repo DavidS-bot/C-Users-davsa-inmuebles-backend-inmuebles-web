@@ -1,5 +1,5 @@
 "use client";
-import { persistToken } from "@/lib/auth";
+import { persistToken } from "../../../lib/auth";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";

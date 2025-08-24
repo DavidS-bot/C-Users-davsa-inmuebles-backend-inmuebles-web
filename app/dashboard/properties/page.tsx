@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import api from "@/lib/api";
+import api from "../../../lib/api";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import ConfirmDialog from "@/components/ConfirmDialog";

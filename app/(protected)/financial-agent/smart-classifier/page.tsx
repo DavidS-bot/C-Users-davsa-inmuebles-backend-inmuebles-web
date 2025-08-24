@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import api from "@/lib/api";
+import api from "../../../lib/api";
 
 interface Movement {
   id: number;

@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import api from "@/lib/api";
-import { persistToken } from "@/lib/auth";
+import api from "../../lib/api";
+import { persistToken } from "../../lib/auth";
 
 export default function LoginPage() {
   const r = useRouter();
