@@ -8,6 +8,18 @@ const nextConfig = {
     // Durante el build, ignora los errores de TypeScript
     ignoreBuildErrors: true,
   },
+  experimental: {
+    // Forzar resolución de rutas
+    esmExternals: false,
+  },
+  webpack: (config) => {
+    // Asegurar que las rutas @ funcionen
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': '.',
+    };
+    return config;
+  },
   images: {
     remotePatterns: [
       {
