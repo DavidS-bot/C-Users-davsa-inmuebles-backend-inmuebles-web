@@ -8,15 +8,12 @@ const nextConfig = {
     // Durante el build, ignora los errores de TypeScript
     ignoreBuildErrors: true,
   },
-  experimental: {
-    // Forzar resolución de rutas
-    esmExternals: false,
-  },
   webpack: (config) => {
-    // Asegurar que las rutas @ funcionen
+    // Configurar alias para resolver las importaciones
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': '.',
+      '@': require('path').resolve(__dirname),
+      '@/lib': require('path').resolve(__dirname, 'lib'),
     };
     return config;
   },
