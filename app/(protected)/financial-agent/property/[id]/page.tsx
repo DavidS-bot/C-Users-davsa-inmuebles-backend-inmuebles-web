@@ -456,7 +456,7 @@ export default function PropertyFinancialDetailsPage() {
               <div className="relative group">
                 {property.photo ? (
                   <img 
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${property.photo}`}
+                    src={property.photo.startsWith('http') ? property.photo : `${process.env.NEXT_PUBLIC_API_URL}${property.photo}`}
                     alt={property.address}
                     className="w-32 h-32 rounded-lg object-cover border border-gray-200"
                   />

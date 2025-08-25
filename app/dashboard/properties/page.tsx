@@ -423,7 +423,7 @@ export default function PropertiesPage() {
                       <div className="flex-shrink-0">
                         {property.photo ? (
                           <img 
-                            src={`${process.env.NEXT_PUBLIC_API_URL}${property.photo}`} 
+                            src={property.photo.startsWith('http') ? property.photo : `${process.env.NEXT_PUBLIC_API_URL}${property.photo}`} 
                             alt={property.address}
                             className="w-12 h-12 rounded-lg object-cover border border-gray-200"
                           />
