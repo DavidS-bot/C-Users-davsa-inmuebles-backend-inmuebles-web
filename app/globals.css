@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+  --background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   --foreground: #0f172a;
-  --primary: #0891b2;
-  --primary-dark: #0e7490;
-  --secondary: #10b981;
-  --accent: #f59e0b;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #8b5cf6;
+  --accent: #ec4899;
   --surface: rgba(255, 255, 255, 0.98);
-  --border: rgba(189, 195, 199, 0.5);
+  --border: rgba(226, 232, 240, 0.8);
 }
 
 @theme inline {
@@ -20,10 +20,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
-    --foreground: #f0fdfa;
-    --surface: rgba(20, 78, 74, 0.95);
-    --border: rgba(94, 234, 212, 0.3);
+    --background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+    --foreground: #f8fafc;
+    --surface: rgba(30, 41, 59, 0.95);
+    --border: rgba(148, 163, 184, 0.2);
   }
 }
 
@@ -48,9 +48,10 @@ body::after {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.08;
+  opacity: 0.15;
   z-index: -2;
   pointer-events: none;
+  filter: contrast(1.2) brightness(1.1);
 }
 
 /* Professional gradient overlay */
@@ -62,8 +63,8 @@ body::before {
   right: 0;
   bottom: 0;
   background: 
-    linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
-    linear-gradient(225deg, rgba(46, 204, 113, 0.1) 0%, transparent 50%);
+    linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    linear-gradient(225deg, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }

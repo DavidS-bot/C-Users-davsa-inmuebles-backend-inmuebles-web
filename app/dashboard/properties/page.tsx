@@ -415,61 +415,100 @@ export default function PropertiesPage() {
               </h2>
             </div>
             
-            <div className="divide-y divide-gray-200">
+            <div className="grid gap-4 p-4">
               {items.map((property) => (
-                <div key={property.id} className="p-6 hover:bg-gray-50 transition-colors">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex-shrink-0">
-                        {property.photo ? (
-                          <img 
-                            src={property.photo.startsWith('http') ? property.photo : `${process.env.NEXT_PUBLIC_API_URL}${property.photo}`} 
-                            alt={property.address}
-                            className="w-12 h-12 rounded-lg object-cover border border-gray-200"
-                          />
-                        ) : (
-                          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                            <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                <div key={property.id} className="group relative bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative p-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-5">
+                        <div className="flex-shrink-0 relative">
+                          {property.photo ? (
+                            <img 
+                              src={property.photo.startsWith('http') ? property.photo : `${process.env.NEXT_PUBLIC_API_URL}${property.photo}`} 
+                              alt={property.address}
+                              className="w-20 h-20 rounded-xl object-cover shadow-lg border-2 border-white"
+                            />
+                          ) : (
+                            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                              <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                              </svg>
+                            </div>
+                          )}
+                          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                           </div>
-                        )}
-                      </div>
+                        </div>
                       <div>
-                        <h3 className="text-lg font-medium text-gray-900">{property.address}</h3>
-                        <div className="flex items-center space-x-4 text-sm text-gray-500 mt-1">
+                        <h3 className="text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                          {property.address}
+                        </h3>
+                        <div className="flex items-center space-x-3 text-sm text-gray-600 mt-2">
                           {property.property_type && (
-                            <span className="bg-gray-100 px-2 py-1 rounded text-xs">
+                            <span className="bg-gradient-to-r from-blue-100 to-indigo-100 px-3 py-1 rounded-full text-xs font-medium text-blue-700">
                               {property.property_type}
                             </span>
                           )}
-                          {property.rooms && <span>{property.rooms} habitaciones</span>}
-                          {property.m2 && <span>{property.m2}m²</span>}
+                          {property.rooms && (
+                            <span className="flex items-center">
+                              <svg className="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fillRule="evenodd" clipRule="evenodd" />
+                              </svg>
+                              {property.rooms} hab
+                            </span>
+                          )}
+                          {property.m2 && (
+                            <span className="flex items-center">
+                              <svg className="w-4 h-4 mr-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                              </svg>
+                              {property.m2}m²
+                            </span>
+                          )}
                           {property.purchase_date && (
-                            <span>Comprada: {formatDate(property.purchase_date)}</span>
+                            <span className="flex items-center">
+                              <svg className="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                              </svg>
+                              {formatDate(property.purchase_date)}
+                            </span>
                           )}
                         </div>
                       </div>
                     </div>
                     
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-6">
                       <div className="text-right flex-1">
                         {property.purchase_price && (
-                          <p className="text-lg font-medium text-gray-900">
-                            {formatCurrency(property.purchase_price)}
-                          </p>
+                          <div>
+                            <p className="text-xs text-gray-500 uppercase tracking-wide">Valor</p>
+                            <p className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                              {formatCurrency(property.purchase_price)}
+                            </p>
+                          </div>
                         )}
-                        <div className="flex flex-wrap gap-2 mt-2 justify-end">
+                        <div className="flex flex-wrap gap-2 mt-3 justify-end">
                           <Link
                             href={`/financial-agent/property/${property.id}`}
-                            className="text-blue-600 hover:text-blue-500 text-sm px-2 py-1 rounded hover:bg-blue-50"
+                            className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm font-medium rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all shadow-sm hover:shadow-md"
                           >
-                            Ver Finanzas
+                            <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                              <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                            </svg>
+                            Finanzas
                           </Link>
                           <Link
                             href={`/financial-agent/property/${property.id}/mortgage`}
-                            className="text-purple-600 hover:text-purple-500 text-sm px-2 py-1 rounded hover:bg-purple-50"
+                            className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all shadow-sm hover:shadow-md"
                           >
+                            <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
+                            </svg>
                             Hipoteca
                           </Link>
                         </div>
